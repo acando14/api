@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\HospitalRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=HospitalRepository::class)
@@ -14,6 +15,7 @@ class Hospital
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"list"})
      */
     private $id;
 
