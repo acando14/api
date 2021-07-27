@@ -10,9 +10,10 @@ RUN apt-get update && apt-get -y install zlib1g-dev unzip libpq-dev git-core lib
     libfreetype6-dev libjpeg62-turbo-dev libpng-dev libonig-dev libicu-dev && \
     yes 'yes' | pecl install -f apcu-${APCU_VERSION} && docker-php-ext-enable apcu && \
     docker-php-ext-configure opcache --enable-opcache && \
-    docker-php-ext-install pdo pdo_pgsql pgsql mbstring opcache -j$(nproc) gd intl && \
+    docker-php-ext-install pdo mysqli pdo_mysql mbstring opcache -j$(nproc) gd intl && \
     echo "memory_limit = -1" > /usr/local/etc/php/conf.d/memory_limit.ini && \
-    curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+    curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && \
+    docker-php-ext-enable pdo_mysql
 
 FROM php_base AS php_dev
 
