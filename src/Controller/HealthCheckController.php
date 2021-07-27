@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Hospital;
+use App\Repository\HospitalRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,7 +17,7 @@ class HealthCheckController extends AbstractController
     public function index(EntityManagerInterface $entityManager): Response
     {
         return $this->json([
-            'database' => $entityManager->getConnection()->isConnected()
+            'database' => $entityManager->getConnection()->connect()
         ]);
     }
 }
