@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Exceptions\EntityNotFoundException;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,6 +15,7 @@ class HealthCheckController extends AbstractController
      */
     public function index(EntityManagerInterface $entityManager): Response
     {
+        throw new EntityNotFoundException();
         return $this->json([
             'database' => $entityManager->getConnection()->connect()
         ]);
