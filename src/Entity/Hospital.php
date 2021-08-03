@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\HospitalRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use App\Entity\Doctor;
 
 /**
  * @ORM\Entity(repositoryClass=HospitalRepository::class)
@@ -38,6 +39,12 @@ class Hospital
      * @ORM\Column(type="string", length=2)
      */
     private $countryCode;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Doctor", mappedBy="hospital")
+     */
+    private $doctors;
+    
 
     public function getId(): ?int
     {
@@ -88,6 +95,18 @@ class Hospital
     public function setCountryCode(string $countryCode): self
     {
         $this->countryCode = $countryCode;
+
+        return $this;
+    }
+
+    public function getDoctors(): ?array
+    {
+        return $this->doctors;
+    }
+
+    public function setDoctors(array $doctors): self
+    {
+        $this->doctors = $doctors;
 
         return $this;
     }
