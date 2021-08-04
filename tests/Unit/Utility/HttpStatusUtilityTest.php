@@ -16,11 +16,11 @@ class HttpStatusUtilityTest extends TestCase
     }
 
 
-    public function test_failureStatus()
-    {
-        $util = new HttpStatusUtility();
-        $this->assertFalse(
-            $util->isSuccessfulHttpStatus(400)
-        );
-    }
+//    public function test_failureStatus()
+//    {
+//        $util = new HttpStatusUtility();
+//        $this->assertFalse(
+//            $util->isSuccessfulHttpStatus(400)
+//        );
+//    }
 }

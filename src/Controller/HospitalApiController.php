@@ -26,7 +26,6 @@ class HospitalApiController extends AbstractController
             'json',
             ['groups' => 'list']
         );
-        throw new EntityNotFoundException();
         return $this->json($hospitalsJson);
     }
 }
