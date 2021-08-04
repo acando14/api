@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Exceptions\EntityNotFoundException;
 use App\Repository\HospitalRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -25,6 +26,7 @@ class HospitalApiController extends AbstractController
             'json',
             ['groups' => 'list']
         );
+        throw new EntityNotFoundException();
         return $this->json($hospitalsJson);
     }
 }

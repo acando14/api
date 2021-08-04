@@ -15,7 +15,6 @@ class HealthCheckController extends AbstractController
      */
     public function index(EntityManagerInterface $entityManager): Response
     {
-        throw new EntityNotFoundException();
         return $this->json([
             'database' => $entityManager->getConnection()->connect()
         ]);
