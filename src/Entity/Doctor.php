@@ -4,7 +4,6 @@ namespace App\Entity;
 
 use App\Repository\DoctorRepository;
 use Doctrine\ORM\Mapping as ORM;
-use App\Entity\Hospital;
 
 /**
  * @ORM\Entity(repositoryClass=DoctorRepository::class)
@@ -22,7 +21,7 @@ class Doctor
      * @ORM\Column(type="string", length=255)
      */
     private $name;
-    
+
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Hospital", inversedBy="doctors")
      */
@@ -44,7 +43,7 @@ class Doctor
 
         return $this;
     }
-    
+
 	public function getHospital(): ? Hospital
     {
         return $this->hospital;

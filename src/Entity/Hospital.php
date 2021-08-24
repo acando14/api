@@ -4,8 +4,7 @@ namespace App\Entity;
 
 use App\Repository\HospitalRepository;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Serializer\Annotation\Groups;
-use App\Entity\Doctor;
+use JMS\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=HospitalRepository::class)
@@ -39,12 +38,12 @@ class Hospital
      * @ORM\Column(type="string", length=2)
      */
     private $countryCode;
-    
+
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Doctor", mappedBy="hospital")
      */
     private $doctors;
-    
+
 
     public function getId(): ?int
     {

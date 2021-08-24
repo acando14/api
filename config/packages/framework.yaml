@@ -16,12 +16,7 @@ framework:
     #fragments: true
     php_errors:
         log: true
-
-    serializer:
-        enabled: true
-        enable_annotations: true
-        name_converter: 'serializer.name_converter.camel_case_to_snake_case'
-
+    csrf_protection: false
 when@test:
     framework:
         test: true

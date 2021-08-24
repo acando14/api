@@ -28,4 +28,25 @@ class HospitalApiTest extends CommonWebTestCase
         );
     }
 
+    public function test_postHospital()
+    {
+        $client = parent::createClient();
+        $client->request('POST', '/api/v1/hospitals', [], [], [
+            'Accept' => 'application/json',
+            'Content-type' => 'application/json'
+        ],
+            json_encode([
+                'name' => 'name test',
+                'address' => 'address-test',
+                'city' => 'city',
+                'country_code' => 'cc'
+            ]));
+
+        $content = json_decode($client->getResponse()->getContent(), true);
+
+        $this->assertEquals(
+            'name test',
+            $content['name']
+        );
+    }
 }
